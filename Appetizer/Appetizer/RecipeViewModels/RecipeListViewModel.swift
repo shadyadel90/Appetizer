@@ -59,6 +59,8 @@ class RecipeListViewModel {
             if refreshControl.isRefreshing { refreshControl.endRefreshing() } }
     }
     
+    
+    
 }
 
 

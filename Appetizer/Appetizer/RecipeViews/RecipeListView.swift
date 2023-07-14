@@ -76,7 +76,7 @@ class RecipeListView: UITableViewController {
         view.addSubview(spinner)
         NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
                                       spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
-
+        
     }
     
     
@@ -111,7 +111,25 @@ class RecipeListView: UITableViewController {
             }.resume()
         }
     }
-   
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let recipes = ViewModel.recipes
+        if segue.identifier == "showDetail"{
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! RecipeDetailView
+                destinationController.recipeTitle = recipes[indexPath.row].name
+                destinationController.recipeCalories = recipes[indexPath.row].calories
+//                destinationController.recipeImage = imageToPass
+                destinationController.recipeDescription = recipes[indexPath.row].description
+                var ingredients = ""
+                for i in recipes[indexPath.row].ingredients {
+                    ingredients.append("\(i) \n")
+                }
+                destinationController.recipeIngredients = ingredients
+            }
+        }
+    }
+    
     
     
 }
