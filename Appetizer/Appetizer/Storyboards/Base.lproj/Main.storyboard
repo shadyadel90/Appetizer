@@ -103,54 +103,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFill" image="Spoon" translatesAutoresizingMaskIntoConstraints="NO" id="7Us-aU-YLG">
-                                <rect key="frame" x="50" y="191" width="328" height="185"/>
+                                <rect key="frame" x="50" y="178" width="328" height="185"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="185" id="9j7-Qb-dAm"/>
+                                    <constraint firstAttribute="height" constant="185" id="5yU-A0-70T"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj1-A0-ykU">
+                                <rect key="frame" x="100" y="571" width="228" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="xpx-WO-jTi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Log in"/>
+                            </button>
                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uKy-RE-JDf">
-                                <rect key="frame" x="80" y="436" width="268" height="90"/>
+                                <rect key="frame" x="80" y="419" width="268" height="90"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s26-wL-5KA">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="IS1-gm-HvC"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CAn-o7-BPO">
                                         <rect key="frame" x="0.0" y="55" width="268" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="WYR-YA-QAe"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj1-A0-ykU">
-                                <rect key="frame" x="130" y="566" width="168" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="B0i-b0-hK2"/>
+                                    <constraint firstAttribute="height" constant="90" id="91R-Ie-may"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Log in"/>
-                            </button>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Uwx-a6-A9s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7Us-aU-YLG" firstAttribute="leading" secondItem="Uwx-a6-A9s" secondAttribute="leading" constant="50" id="0RD-Jd-aJq"/>
-                            <constraint firstItem="7Us-aU-YLG" firstAttribute="top" secondItem="Uwx-a6-A9s" secondAttribute="top" constant="100" id="JL1-KP-plr"/>
-                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="trailing" secondItem="gj1-A0-ykU" secondAttribute="trailing" constant="130" id="MTe-Zy-QwD"/>
-                            <constraint firstItem="uKy-RE-JDf" firstAttribute="top" secondItem="7Us-aU-YLG" secondAttribute="bottom" constant="60" id="MZp-PC-jva"/>
-                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="trailing" secondItem="uKy-RE-JDf" secondAttribute="trailing" constant="80" id="NGg-c7-1Ah"/>
-                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="trailing" secondItem="7Us-aU-YLG" secondAttribute="trailing" constant="50" id="Thb-C3-JAV"/>
-                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="bottom" secondItem="gj1-A0-ykU" secondAttribute="bottom" constant="288" id="VRZ-dp-nM7"/>
-                            <constraint firstItem="gj1-A0-ykU" firstAttribute="top" secondItem="uKy-RE-JDf" secondAttribute="bottom" constant="40" id="nVl-J6-xgZ"/>
-                            <constraint firstItem="uKy-RE-JDf" firstAttribute="leading" secondItem="Uwx-a6-A9s" secondAttribute="leading" constant="80" id="ozQ-tF-kdj"/>
-                            <constraint firstItem="gj1-A0-ykU" firstAttribute="leading" secondItem="Uwx-a6-A9s" secondAttribute="leading" constant="130" id="xqr-XP-jSI"/>
+                            <constraint firstItem="7Us-aU-YLG" firstAttribute="top" secondItem="Uwx-a6-A9s" secondAttribute="top" constant="87" id="HQd-vV-i4n"/>
+                            <constraint firstItem="uKy-RE-JDf" firstAttribute="leading" secondItem="Uwx-a6-A9s" secondAttribute="leading" constant="80" id="Jpv-8c-Q7W"/>
+                            <constraint firstItem="gj1-A0-ykU" firstAttribute="leading" secondItem="Uwx-a6-A9s" secondAttribute="leading" constant="100" id="Kes-H7-RdV"/>
+                            <constraint firstItem="7Us-aU-YLG" firstAttribute="leading" secondItem="Uwx-a6-A9s" secondAttribute="leading" constant="50" id="YSb-r9-qLm"/>
+                            <constraint firstItem="gj1-A0-ykU" firstAttribute="top" secondItem="uKy-RE-JDf" secondAttribute="bottom" constant="62" id="ZrH-2C-1l5"/>
+                            <constraint firstItem="uKy-RE-JDf" firstAttribute="top" secondItem="7Us-aU-YLG" secondAttribute="bottom" constant="56" id="aH4-iB-5RU"/>
+                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="trailing" secondItem="7Us-aU-YLG" secondAttribute="trailing" constant="50" id="fHl-hs-4dW"/>
+                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="trailing" secondItem="uKy-RE-JDf" secondAttribute="trailing" constant="80" id="gl5-Fb-r4S"/>
+                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="bottom" secondItem="gj1-A0-ykU" secondAttribute="bottom" constant="288" id="mab-6X-hhR"/>
+                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="trailing" secondItem="gj1-A0-ykU" secondAttribute="trailing" constant="100" id="n8q-Xb-mai"/>
+                            <constraint firstItem="uKy-RE-JDf" firstAttribute="top" secondItem="7Us-aU-YLG" secondAttribute="bottom" constant="56" id="s6k-Tm-etI"/>
+                            <constraint firstItem="gj1-A0-ykU" firstAttribute="top" secondItem="uKy-RE-JDf" secondAttribute="bottom" constant="62" id="yZu-5G-Ydc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="byQ-28-lxR"/>
