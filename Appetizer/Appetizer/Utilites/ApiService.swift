@@ -49,7 +49,6 @@ class ApiService : UIViewController {
                 let decoder = JSONDecoder()
                 var recipes = self.recipeListViewModel.recipes
                    recipes = try decoder.decode([Recipe].self, from: data)
-                    print(recipes)
             } catch {
                 print("Error decoding JSON: \(error.localizedDescription)")
             }

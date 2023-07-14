@@ -16,6 +16,7 @@ class RecipeListView: UITableViewController {
     
     let urlString = "https://api.npoint.io/43427003d33f1f6b51cc"
     var spinner = UIActivityIndicatorView()
+    let userDefault = UserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,8 +96,6 @@ class RecipeListView: UITableViewController {
                     do {
                         let decoder = JSONDecoder()
                         self.ViewModel.recipes = try decoder.decode([Recipe].self, from: data)
-                        
-                        // Reload the table view on the main thread
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                             self.ViewModel.refresherStopAnimating()
@@ -111,25 +110,34 @@ class RecipeListView: UITableViewController {
             }.resume()
         }
     }
- 
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let recipes = ViewModel.recipes
         if segue.identifier == "showDetail"{
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let destinationController = segue.destination as! RecipeDetailView
-                destinationController.recipeTitle = recipes[indexPath.row].name
-                destinationController.recipeCalories = recipes[indexPath.row].calories
-//                destinationController.recipeImage = imageToPass
-                destinationController.recipeDescription = recipes[indexPath.row].description
-                var ingredients = ""
-                for i in recipes[indexPath.row].ingredients {
-                    ingredients.append("\(i) \n")
+            if !userDefault.bool(forKey: "logedin"){
+                showAlert()
+            }
+            else {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    let destinationController = segue.destination as! RecipeDetailView
+                    destinationController.recipeTitle = recipes[indexPath.row].name
+                    destinationController.recipeCalories = recipes[indexPath.row].calories
+                    destinationController.recipeImageUrl = recipes[indexPath.row].image!
+                    destinationController.recipeDescription = recipes[indexPath.row].description
+                    var ingredients = ""
+                    for i in recipes[indexPath.row].ingredients {
+                        ingredients.append("\(i) \n")
+                    }
+                    destinationController.recipeIngredients = ingredients
                 }
-                destinationController.recipeIngredients = ingredients
             }
         }
     }
     
-    
-    
+    func showAlert() {
+        let alertController = UIAlertController(title: "Oops", message: "We can't proceed to details as you didn't log in", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }

@@ -13,13 +13,13 @@ class RecipeDetailView: UITableViewController {
 
     var recipeTitle = ""
     var recipeCalories = ""
-//  var recipeImage = UIImage?.self
+    var recipeImageUrl = ""
     var recipeDescription = ""
     var recipeIngredients = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //Setimage(imageUrl: recipeImageUrl)
     }
 
     // MARK: - Table view data source
@@ -35,6 +35,26 @@ class RecipeDetailView: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeHeader", for: indexPath) as! RecipeDetailHeaderCell
             cell.nameLabel.text = recipeTitle
             cell.caloriesLabel.text = recipeCalories
+            if let imageURL = URL(string: recipeImageUrl) {
+                URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+                    if let error = error {
+                        print("Error loading image: \(error)")
+                        // Handle the error here
+                        return
+                    }
+                    else {
+                        print("Success")
+                    }
+                    if let data = data {
+                        DispatchQueue.main.async { [self] in
+                        let image = UIImage(data: data)
+                            cell.headerImageView.image = image
+                            cell.setNeedsLayout()
+                        }
+                    }
+                }.resume()
+                
+            }
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeDescription", for: indexPath) as! RecipeDetailDescriptionCell
@@ -51,7 +71,31 @@ class RecipeDetailView: UITableViewController {
         
     }
     
-    
+    func Setimage(imageUrl: String){
+       
+        if let imageURL = URL(string: imageUrl) {
+            URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+                if let error = error {
+                    print("Error loading image: \(error)")
+                    // Handle the error here
+                    return
+                }
+                else {
+                    print("Success")
+                }
+                
+                if let data = data {
+                    // Update the cell's image view on the main thread
+                    DispatchQueue.main.async { [self] in
+                    let image = UIImage(data: data)
+                         
+                         // Trigger cell layout update
+                    }
+                }
+            }.resume()
+            
+        }
+    }
 
   
 

@@ -11,8 +11,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
+    let userdefault = UserDefaults()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        userdefault.set(false, forKey: "logedin")
         Thread.sleep(forTimeInterval: 2.5)
         return true
     }
