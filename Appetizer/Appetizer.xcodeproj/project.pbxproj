@@ -64,11 +64,12 @@
 		F240548A2A6018B3009F43C8 /* Appetizer */ = {
 			isa = PBXGroup;
 			children = (
+				F24054A62A601B9C009F43C8 /* RecipeViews */,
+				F2E5EDBC2A61063C0080A864 /* RecipeViewModels */,
+				F24054A72A601BD7009F43C8 /* ViewCells */,
 				F2E5EDBB2A60F5500080A864 /* Utilites */,
 				F24054A82A601C93009F43C8 /* Model */,
-				F24054A62A601B9C009F43C8 /* RecipeList */,
 				F24054A52A601B89009F43C8 /* Storyboards */,
-				F24054A72A601BD7009F43C8 /* ViewCells */,
 				F24054A42A601B79009F43C8 /* Configuration */,
 				F24054A32A601B5B009F43C8 /* Resources */,
 				F24054992A6018B4009F43C8 /* Info.plist */,
@@ -102,13 +103,12 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		F24054A62A601B9C009F43C8 /* RecipeList */ = {
+		F24054A62A601B9C009F43C8 /* RecipeViews */ = {
 			isa = PBXGroup;
 			children = (
 				F240549F2A601961009F43C8 /* RecipeListView.swift */,
-				F24054AB2A601DAE009F43C8 /* RecipeListViewModel.swift */,
 			);
-			path = RecipeList;
+			path = RecipeViews;
 			sourceTree = "<group>";
 		};
 		F24054A72A601BD7009F43C8 /* ViewCells */ = {
@@ -133,6 +133,14 @@
 				F24054AD2A602748009F43C8 /* ApiService.swift */,
 			);
 			path = Utilites;
+			sourceTree = "<group>";
+		};
+		F2E5EDBC2A61063C0080A864 /* RecipeViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F24054AB2A601DAE009F43C8 /* RecipeListViewModel.swift */,
+			);
+			path = RecipeViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
