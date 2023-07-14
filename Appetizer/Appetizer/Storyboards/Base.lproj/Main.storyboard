@@ -11,7 +11,7 @@
         <!--Choose your Appetizer-->
         <scene sceneID="HUP-mS-Ow4">
             <objects>
-                <tableViewController id="dj9-FG-oXY" customClass="RecipeListView" customModule="Appetizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HomeController" id="dj9-FG-oXY" customClass="RecipeListView" customModule="Appetizer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="jDM-zP-8rI">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,7 +85,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Login" width="10" springLoaded="YES" style="done" id="bix-vN-VFX">
                             <color key="tintColor" systemColor="tintColor"/>
                             <connections>
-                                <segue destination="Pex-gd-VAZ" kind="show" id="KgI-Hx-jKQ"/>
+                                <segue destination="Z1e-98-HJ6" kind="show" id="9DS-JI-mmD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -94,69 +94,74 @@
             </objects>
             <point key="canvasLocation" x="597.70992366412213" y="5.6338028169014089"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Paq-g1-7fA">
+        <!--Login-->
+        <scene sceneID="Dzv-J8-HKG">
             <objects>
-                <viewController id="Pex-gd-VAZ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7pb-2l-kbT">
+                <viewController id="Z1e-98-HJ6" customClass="LoginView" customModule="Appetizer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s6j-Z5-sE4">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFill" image="Spoon" translatesAutoresizingMaskIntoConstraints="NO" id="7Us-aU-YLG">
-                                <rect key="frame" x="50" y="178" width="328" height="185"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Spoon" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-sA-KRl">
+                                <rect key="frame" x="40" y="146" width="348" height="216"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="185" id="5yU-A0-70T"/>
+                                    <constraint firstAttribute="height" priority="999" constant="200" id="PNT-fp-vDQ"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj1-A0-ykU">
-                                <rect key="frame" x="100" y="571" width="228" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="xpx-WO-jTi"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Log in"/>
-                            </button>
-                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uKy-RE-JDf">
-                                <rect key="frame" x="80" y="419" width="268" height="90"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="TJh-J1-7LC">
+                                <rect key="frame" x="80" y="405" width="268" height="90"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s26-wL-5KA">
-                                        <rect key="frame" x="0.0" y="0.0" width="268" height="35"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0BI-h3-p3h">
+                                        <rect key="frame" x="0.0" y="0.0" width="268" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CAn-o7-BPO">
-                                        <rect key="frame" x="0.0" y="55" width="268" height="35"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9jb-ac-87B">
+                                        <rect key="frame" x="0.0" y="56" width="268" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="91R-Ie-may"/>
+                                    <constraint firstAttribute="height" constant="90" id="trX-wB-AMu"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-Hr-ckc">
+                                <rect key="frame" x="94" y="546" width="240" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="rTx-0L-pbO"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Log in"/>
+                                <connections>
+                                    <action selector="loginTapped:" destination="Z1e-98-HJ6" eventType="touchUpInside" id="rtG-uD-QuR"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Uwx-a6-A9s"/>
+                        <viewLayoutGuide key="safeArea" id="W5P-vc-egB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7Us-aU-YLG" firstAttribute="top" secondItem="Uwx-a6-A9s" secondAttribute="top" constant="87" id="HQd-vV-i4n"/>
-                            <constraint firstItem="uKy-RE-JDf" firstAttribute="leading" secondItem="Uwx-a6-A9s" secondAttribute="leading" constant="80" id="Jpv-8c-Q7W"/>
-                            <constraint firstItem="gj1-A0-ykU" firstAttribute="leading" secondItem="Uwx-a6-A9s" secondAttribute="leading" constant="100" id="Kes-H7-RdV"/>
-                            <constraint firstItem="7Us-aU-YLG" firstAttribute="leading" secondItem="Uwx-a6-A9s" secondAttribute="leading" constant="50" id="YSb-r9-qLm"/>
-                            <constraint firstItem="gj1-A0-ykU" firstAttribute="top" secondItem="uKy-RE-JDf" secondAttribute="bottom" constant="62" id="ZrH-2C-1l5"/>
-                            <constraint firstItem="uKy-RE-JDf" firstAttribute="top" secondItem="7Us-aU-YLG" secondAttribute="bottom" constant="56" id="aH4-iB-5RU"/>
-                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="trailing" secondItem="7Us-aU-YLG" secondAttribute="trailing" constant="50" id="fHl-hs-4dW"/>
-                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="trailing" secondItem="uKy-RE-JDf" secondAttribute="trailing" constant="80" id="gl5-Fb-r4S"/>
-                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="bottom" secondItem="gj1-A0-ykU" secondAttribute="bottom" constant="288" id="mab-6X-hhR"/>
-                            <constraint firstItem="Uwx-a6-A9s" firstAttribute="trailing" secondItem="gj1-A0-ykU" secondAttribute="trailing" constant="100" id="n8q-Xb-mai"/>
-                            <constraint firstItem="uKy-RE-JDf" firstAttribute="top" secondItem="7Us-aU-YLG" secondAttribute="bottom" constant="56" id="s6k-Tm-etI"/>
-                            <constraint firstItem="gj1-A0-ykU" firstAttribute="top" secondItem="uKy-RE-JDf" secondAttribute="bottom" constant="62" id="yZu-5G-Ydc"/>
+                            <constraint firstItem="W5P-vc-egB" firstAttribute="trailing" secondItem="TJh-J1-7LC" secondAttribute="trailing" constant="80" id="118-nB-6YH"/>
+                            <constraint firstItem="W5P-vc-egB" firstAttribute="trailing" secondItem="eoV-Hr-ckc" secondAttribute="trailing" constant="94" id="1ya-od-oVB"/>
+                            <constraint firstItem="W5P-vc-egB" firstAttribute="bottom" secondItem="eoV-Hr-ckc" secondAttribute="bottom" constant="300" id="Gn4-Kf-Lg9"/>
+                            <constraint firstItem="eoV-Hr-ckc" firstAttribute="top" secondItem="TJh-J1-7LC" secondAttribute="bottom" constant="51" id="Oy6-ET-N2Q"/>
+                            <constraint firstItem="eoV-Hr-ckc" firstAttribute="leading" secondItem="W5P-vc-egB" secondAttribute="leading" constant="94" id="SHv-ac-1Ni"/>
+                            <constraint firstItem="qMX-sA-KRl" firstAttribute="top" secondItem="W5P-vc-egB" secondAttribute="top" constant="55" id="TRX-n5-zHf"/>
+                            <constraint firstItem="TJh-J1-7LC" firstAttribute="top" secondItem="qMX-sA-KRl" secondAttribute="bottom" constant="43" id="ZaR-c0-2o9"/>
+                            <constraint firstItem="TJh-J1-7LC" firstAttribute="leading" secondItem="W5P-vc-egB" secondAttribute="leading" constant="80" id="kVN-ww-0sJ"/>
+                            <constraint firstItem="W5P-vc-egB" firstAttribute="trailing" secondItem="qMX-sA-KRl" secondAttribute="trailing" constant="40" id="qT5-Wp-S25"/>
+                            <constraint firstItem="qMX-sA-KRl" firstAttribute="leading" secondItem="W5P-vc-egB" secondAttribute="leading" constant="40" id="yG2-nI-9pL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="byQ-28-lxR"/>
+                    <navigationItem key="navigationItem" title="Login" id="uGH-uE-WrR"/>
+                    <connections>
+                        <outlet property="PasswordTextField" destination="9jb-ac-87B" id="c08-0j-Llr"/>
+                        <outlet property="UsernameTextField" destination="0BI-h3-p3h" id="Nfj-7Y-Svl"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="urr-ej-BvS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ghe-O8-GMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="-531"/>
+            <point key="canvasLocation" x="1492.9906542056074" y="-485.31317494600438"/>
         </scene>
         <!--Appetizer Detail-->
         <scene sceneID="Ert-7H-1gH">
@@ -167,8 +172,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeDescription" id="Ka9-aT-S2H" customClass="RecipeDetailDescriptionCell" customModule="Appetizer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="428" height="42.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ka9-aT-S2H" id="C9Z-xu-cU2">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="42.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKY-ZV-9nl">
+                                            <rect key="frame" x="20" y="11.000000000000002" width="388" height="20.666666666666671"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="WKY-ZV-9nl" secondAttribute="trailing" id="7SI-J0-C3t"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WKY-ZV-9nl" secondAttribute="bottom" id="SJr-qB-pJY"/>
+                                        <constraint firstItem="WKY-ZV-9nl" firstAttribute="leading" secondItem="C9Z-xu-cU2" secondAttribute="leadingMargin" id="p2v-uv-vbJ"/>
+                                        <constraint firstItem="WKY-ZV-9nl" firstAttribute="top" secondItem="C9Z-xu-cU2" secondAttribute="topMargin" id="wAM-IO-qQB"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="WKY-ZV-9nl" id="MDp-SF-Tym"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeHeader" rowHeight="280" id="3y7-Dp-ETf" customClass="RecipeDetailHeaderCell" customModule="Appetizer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="428" height="280"/>
+                                <rect key="frame" x="0.0" y="92.666667938232422" width="428" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3y7-Dp-ETf" id="yQ5-yh-SYq">
                                     <rect key="frame" x="0.0" y="0.0" width="428" height="280"/>
@@ -223,31 +253,6 @@
                                     <outlet property="caloriesLabel" destination="uXN-td-hxF" id="87n-Gx-0GQ"/>
                                     <outlet property="headerImageView" destination="7Nh-TI-THY" id="Sxi-Rb-axd"/>
                                     <outlet property="nameLabel" destination="T0d-lV-ah4" id="ab4-eG-SFU"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeDescription" id="Ka9-aT-S2H" customClass="RecipeDetailDescriptionCell" customModule="Appetizer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="330" width="428" height="42.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ka9-aT-S2H" id="C9Z-xu-cU2">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="42.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKY-ZV-9nl">
-                                            <rect key="frame" x="20" y="11.000000000000002" width="388" height="20.666666666666671"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="WKY-ZV-9nl" secondAttribute="trailing" id="7SI-J0-C3t"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="WKY-ZV-9nl" secondAttribute="bottom" id="SJr-qB-pJY"/>
-                                        <constraint firstItem="WKY-ZV-9nl" firstAttribute="leading" secondItem="C9Z-xu-cU2" secondAttribute="leadingMargin" id="p2v-uv-vbJ"/>
-                                        <constraint firstItem="WKY-ZV-9nl" firstAttribute="top" secondItem="C9Z-xu-cU2" secondAttribute="topMargin" id="wAM-IO-qQB"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="descriptionLabel" destination="WKY-ZV-9nl" id="MDp-SF-Tym"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeIngredients" id="xzN-QD-x6S" customClass="RecipeDetailIngredientsCell" customModule="Appetizer" customModuleProvider="target">

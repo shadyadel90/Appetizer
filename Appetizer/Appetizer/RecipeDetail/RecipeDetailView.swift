@@ -13,7 +13,7 @@ class RecipeDetailView: UITableViewController {
 
     var recipeTitle = ""
     var recipeCalories = ""
-//    var recipeImage = UIImage?.self
+//  var recipeImage = UIImage?.self
     var recipeDescription = ""
     var recipeIngredients = ""
     
