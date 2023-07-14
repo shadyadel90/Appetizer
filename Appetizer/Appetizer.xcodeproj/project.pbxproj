@@ -64,6 +64,7 @@
 		F240548A2A6018B3009F43C8 /* Appetizer */ = {
 			isa = PBXGroup;
 			children = (
+				F2E5EDBB2A60F5500080A864 /* Utilites */,
 				F24054A82A601C93009F43C8 /* Model */,
 				F24054A62A601B9C009F43C8 /* RecipeList */,
 				F24054A52A601B89009F43C8 /* Storyboards */,
@@ -71,7 +72,6 @@
 				F24054A42A601B79009F43C8 /* Configuration */,
 				F24054A32A601B5B009F43C8 /* Resources */,
 				F24054992A6018B4009F43C8 /* Info.plist */,
-				F24054AD2A602748009F43C8 /* ApiService.swift */,
 			);
 			path = Appetizer;
 			sourceTree = "<group>";
@@ -125,6 +125,14 @@
 				F24054A92A601CA8009F43C8 /* Recipe.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F2E5EDBB2A60F5500080A864 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				F24054AD2A602748009F43C8 /* ApiService.swift */,
+			);
+			path = Utilites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
