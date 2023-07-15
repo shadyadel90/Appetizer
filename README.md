@@ -56,6 +56,7 @@ Explore the intuitive interface and navigate through the different screens.
 
 ## Demo
 
+https://github.com/shadyadel90/Appetizer/assets/31343078/0dcebcf8-dc47-4085-a57e-64ceb67c6fe3
 
 ## Contributing
 
