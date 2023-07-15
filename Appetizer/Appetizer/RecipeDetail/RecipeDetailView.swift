@@ -74,7 +74,6 @@ class RecipeDetailView: UIViewController {
                 else {
                     print("Success")
                 }
-                
                 if let data = data {
                     DispatchQueue.main.async { [self] in
                     let image = UIImage(data: data)
