@@ -1,8 +1,6 @@
 # Appetizer
 # UIKIT iOS App
 
-![App Screenshot](Screenshot 2023-07-15 at 6.01.35 PM.png)
-
 ## Description
 
 The project is built using Swift and follows a clean architecture pattern. It leverages API integration, Table View, Cache Data and includes UI tests.
@@ -51,14 +49,9 @@ Explore the intuitive interface and navigate through the different screens.
 
 ## Screenshots
 
-Home Screen	Task Details	Dark Mode
-Home Screen	Task Details	Dark Mode
 
 ## Demo
 
-Check out this short video demo to see My Awesome iOS Project in action:
-
-Demo Video
 
 ## Contributing
 
