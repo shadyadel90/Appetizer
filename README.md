@@ -1,6 +1,8 @@
 # Appetizer
 # UIKIT iOS App
 
+<img width="617" alt="Screenshot 2023-07-15 at 5 59 39 PM" src="https://github.com/shadyadel90/Appetizer/assets/31343078/0ed359fa-3261-4041-8fdb-79e631d40ffb">
+
 ## Description
 
 The project is built using Swift and follows a clean architecture pattern. It leverages API integration, Table View, Cache Data and includes UI tests.
@@ -48,7 +50,9 @@ Explore the intuitive interface and navigate through the different screens.
 
 
 ## Screenshots
-
+<img width="419" alt="Screenshot 2023-07-15 at 6 01 13 PM" src="https://github.com/shadyadel90/Appetizer/assets/31343078/cae3ea6f-1bb6-4e08-8026-273db5272e2d"> 
+<img width="616" alt="Screenshot 2023-07-15 at 6 00 23 PM" src="https://github.com/shadyadel90/Appetizer/assets/31343078/b357127d-cfa7-4dc6-8991-8b61e730a939">
+<img width="375" alt="Screenshot 2023-07-15 at 6 01 35 PM" src="https://github.com/shadyadel90/Appetizer/assets/31343078/b364bc98-05d7-42b5-a5b2-c6c73d42c7d0">
 
 ## Demo
 
