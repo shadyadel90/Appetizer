@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecipeListView: UITableViewController {
+class RecipeListView: UITableViewController{
     
     
     lazy var ViewModel : RecipeListViewModel = {
@@ -16,8 +16,7 @@ class RecipeListView: UITableViewController {
     
     let urlString = "https://api.npoint.io/43427003d33f1f6b51cc"
     var spinner = UIActivityIndicatorView()
-    let userDefault = UserDefaults()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         ViewModel.fetchData()
@@ -25,7 +24,7 @@ class RecipeListView: UITableViewController {
         navigationItem.backButtonTitle = ""
         tableView.alpha = 0.5
         fetchDataFromAPI()
-        
+       
     }
     
     
@@ -65,11 +64,11 @@ class RecipeListView: UITableViewController {
                 print("Couldn't fetch the image")
             }
         }
-        
         return cell
     }
     
     
+   
     func initSpinner() {
         spinner.style = .large
         spinner.hidesWhenStopped = true
@@ -79,9 +78,6 @@ class RecipeListView: UITableViewController {
                                       spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
         
     }
-    
-    
-    
     
     func fetchDataFromAPI() {
         spinner.startAnimating()
@@ -114,7 +110,8 @@ class RecipeListView: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let recipes = ViewModel.recipes
         if segue.identifier == "showDetail"{
-            if !userDefault.bool(forKey: "logedin"){
+           
+            if !UserDefaults.standard.bool(forKey: "loggedIn"){
                 showAlert()
             }
             else {

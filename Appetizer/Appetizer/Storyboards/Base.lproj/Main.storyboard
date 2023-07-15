@@ -155,8 +155,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="uGH-uE-WrR"/>
                     <connections>
-                        <outlet property="PasswordTextField" destination="9jb-ac-87B" id="c08-0j-Llr"/>
-                        <outlet property="UsernameTextField" destination="0BI-h3-p3h" id="Nfj-7Y-Svl"/>
+                        <outlet property="passwordTextField" destination="9jb-ac-87B" id="59K-eG-Zrj"/>
+                        <outlet property="usernameTextField" destination="0BI-h3-p3h" id="aDO-cY-AsB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ghe-O8-GMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -185,49 +185,37 @@
                                                 <constraint firstAttribute="height" constant="240" id="5yP-nd-p4u"/>
                                             </constraints>
                                         </imageView>
-                                        <view alpha="0.22" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAG-FJ-9dd">
-                                            <rect key="frame" x="20" y="11" width="388" height="258"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rus-Br-byP">
+                                            <rect key="frame" x="30" y="199.33333333333334" width="66.333333333333329" height="59.666666666666657"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="W6Y-Ix-kUD">
-                                                    <rect key="frame" x="10" y="185" width="77.666666666666671" height="63"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0d-lV-ah4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="77.666666666666671" height="33.666666666666664"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXN-td-hxF">
-                                                            <rect key="frame" x="0.0" y="36.666666666666657" width="77.666666666666671" height="26.333333333333329"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37a-GF-Vlz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="66.333333333333329" height="33.666666666666664"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cc3-uT-cqP">
+                                                    <rect key="frame" x="0.0" y="41.666666666666657" width="66.333333333333329" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="W6Y-Ix-kUD" secondAttribute="bottom" constant="10" id="XrC-kS-ptU"/>
-                                                <constraint firstItem="W6Y-Ix-kUD" firstAttribute="leading" secondItem="HAG-FJ-9dd" secondAttribute="leading" constant="10" id="hNV-Nz-8R9"/>
-                                            </constraints>
-                                        </view>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="HAG-FJ-9dd" firstAttribute="bottom" secondItem="7Nh-TI-THY" secondAttribute="bottom" id="20D-wO-LAF"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Rus-Br-byP" secondAttribute="bottom" constant="10" id="0zG-gy-v4V"/>
                                         <constraint firstItem="7Nh-TI-THY" firstAttribute="top" secondItem="yQ5-yh-SYq" secondAttribute="topMargin" id="4ev-Uo-yky"/>
-                                        <constraint firstItem="HAG-FJ-9dd" firstAttribute="top" secondItem="7Nh-TI-THY" secondAttribute="top" id="4p5-bX-OoN"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="7Nh-TI-THY" secondAttribute="trailing" id="HdK-1j-k5S"/>
                                         <constraint firstItem="7Nh-TI-THY" firstAttribute="leading" secondItem="yQ5-yh-SYq" secondAttribute="leadingMargin" id="Uf8-OD-IG9"/>
-                                        <constraint firstItem="HAG-FJ-9dd" firstAttribute="leading" secondItem="7Nh-TI-THY" secondAttribute="leading" id="UxF-gN-zpK"/>
-                                        <constraint firstItem="HAG-FJ-9dd" firstAttribute="trailing" secondItem="7Nh-TI-THY" secondAttribute="trailing" id="pXs-Ot-HZJ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="7Nh-TI-THY" secondAttribute="bottom" id="xH1-qO-YeB"/>
+                                        <constraint firstItem="Rus-Br-byP" firstAttribute="leading" secondItem="yQ5-yh-SYq" secondAttribute="leadingMargin" constant="10" id="xU0-Xf-6Dt"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="caloriesLabel" destination="uXN-td-hxF" id="87n-Gx-0GQ"/>
+                                    <outlet property="caloriesLabel" destination="Cc3-uT-cqP" id="OH2-pn-0Y0"/>
                                     <outlet property="headerImageView" destination="7Nh-TI-THY" id="Sxi-Rb-axd"/>
-                                    <outlet property="nameLabel" destination="T0d-lV-ah4" id="ab4-eG-SFU"/>
+                                    <outlet property="nameLabel" destination="37a-GF-Vlz" id="ARl-hi-xhy"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeIngredients" id="xzN-QD-x6S" customClass="RecipeDetailIngredientsCell" customModule="Appetizer" customModuleProvider="target">
@@ -291,7 +279,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2i-jN-uC5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="194"/>
+            <point key="canvasLocation" x="1492.9906542056074" y="193.73650107991361"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cR9-fm-eUr">
