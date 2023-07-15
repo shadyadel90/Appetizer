@@ -1,7 +1,7 @@
 # Appetizer
 # UIKIT iOS App
 
-![App Screenshot](screenshots/app_screenshot.png)
+![App Screenshot](Screenshot 2023-07-15 at 6.01.35 PM.png)
 
 ## Description
 
