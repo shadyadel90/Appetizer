@@ -7,77 +7,68 @@
 
 import UIKit
 
-class RecipeDetailView: UITableViewController {
+class RecipeDetailView: UIViewController {
     
     
-
+    let userDefaults = UserDefaults()
+    
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var headerView: RecipeDetailHeaderView!
+    
+    @IBAction func heartPressed(_ sender: UIButton) {
+        if headerView.heartButton.currentImage == UIImage(systemName: "heart")
+        {
+            headerView.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            UserDefaults().set(true, forKey: recipeTitle)
+        }
+        else {
+            headerView.heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            UserDefaults().set(false, forKey: recipeTitle)
+        }
+        
+    }
+   
+    
+    
     var recipeTitle = ""
     var recipeCalories = ""
     var recipeImageUrl = ""
+    var recipeFav = true
     var recipeDescription = ""
     var recipeIngredients = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Setimage(imageUrl: recipeImageUrl)
-    }
-
-    // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeHeader", for: indexPath) as! RecipeDetailHeaderCell
-            cell.nameLabel.text = recipeTitle
-            cell.caloriesLabel.text = recipeCalories
-            if let imageURL = URL(string: recipeImageUrl) {
-                URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
-                    if let error = error {
-                        print("Error loading image: \(error)")
-                        // Handle the error here
-                        return
-                    }
-                    else {
-                        print("Success")
-                    }
-                    if let data = data {
-                        DispatchQueue.main.async { [self] in
-                        let image = UIImage(data: data)
-                            cell.headerImageView.image = image
-                            cell.setNeedsLayout()
-                        }
-                    }
-                }.resume()
-                
-            }
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeDescription", for: indexPath) as! RecipeDetailDescriptionCell
-            cell.descriptionLabel.text = recipeDescription
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeIngredients", for: indexPath) as! RecipeDetailIngredientsCell
-            cell.ingredientsLabel.text = recipeIngredients
-            return cell
-        default:
-            fatalError("Failed to instantiate the table view cell for detail view controller")
-            
-        }
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.contentInsetAdjustmentBehavior = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
+        // Configure header view
+        headerView.nameLabel.text = recipeTitle
+        headerView.caloriesLabel.text = recipeCalories
+        Setimage(imageUrl: recipeImageUrl)
+        favouriteButton()
         
     }
     
+    func favouriteButton (){
+        if userDefaults.bool(forKey: recipeTitle)
+        {
+            headerView.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
+        else {
+            headerView.heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        view.reloadInputViews()
+    }
+    
+  
     func Setimage(imageUrl: String){
        
         if let imageURL = URL(string: imageUrl) {
             URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
                 if let error = error {
                     print("Error loading image: \(error)")
-                    // Handle the error here
                     return
                 }
                 else {
@@ -85,11 +76,9 @@ class RecipeDetailView: UITableViewController {
                 }
                 
                 if let data = data {
-                    // Update the cell's image view on the main thread
                     DispatchQueue.main.async { [self] in
                     let image = UIImage(data: data)
-                         
-                         // Trigger cell layout update
+                        self.headerView.headerImageView.image = image
                     }
                 }
             }.resume()
@@ -97,6 +86,29 @@ class RecipeDetailView: UITableViewController {
         }
     }
 
-  
+   
 
+}
+extension RecipeDetailView: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section : Int) -> Int {
+        return 2
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionDetailViewCell", for: indexPath) as! RecipeDetailDescriptionCell
+            cell.descriptionLabel.text = recipeDescription
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientsDetailViewCell", for: indexPath) as! RecipeDetailIngredientsCell
+            cell.ingredientsLabel.text = recipeIngredients
+            
+            return cell
+        default:
+            fatalError("Failed to instantiate the table view cell for deta il view controller")
+            
+        }
+        
+    }
 }

@@ -26,7 +26,9 @@ class RecipeListView: UITableViewController{
         fetchDataFromAPI()
        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     // MARK: - Table view data source
     
@@ -50,7 +52,7 @@ class RecipeListView: UITableViewController{
         else {
             cell.calories.text = "not specified"
         }
-        
+        cell.heartImage.isHidden = UserDefaults().bool(forKey: ViewModel.recipes[indexPath.row].name) ? false : true
         let imageUrl = URL(string: recipeCell.image!)
         ViewModel.getImageFromCache(url: imageUrl!) { image in
             if image != nil {

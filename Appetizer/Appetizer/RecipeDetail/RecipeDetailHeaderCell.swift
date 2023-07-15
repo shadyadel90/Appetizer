@@ -7,21 +7,15 @@
 
 import UIKit
 
-class RecipeDetailHeaderCell: UITableViewCell {
-
+class RecipeDetailHeaderView: UIView {
+    
+    
     @IBOutlet var headerImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var caloriesLabel: UILabel!
+    @IBOutlet var heartButton: UIButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
+   
 
 }

@@ -15,6 +15,7 @@ class RecipeListViewCell: UITableViewCell {
     
     @IBOutlet var recipeImage: UIImageView!
 
+    @IBOutlet var heartImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
