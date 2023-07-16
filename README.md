@@ -45,7 +45,9 @@ Dark mode support for improved usability.
 ## Usage
 
 Launch the app on your iOS device or simulator.
+
 Log in with your existing credentials.
+
 Explore the intuitive interface and navigate through the different screens.
 
 
@@ -70,14 +72,15 @@ The project includes UI tests to ensure the stability and correctness of compone
 
 Here are some upcoming features and improvements planned for the project:
 
-Integration with a sharing service (Messaging app , Social media).
-Adding context preview for a much rich user experience.
-Recipe filtering and sorting options.
+1. Integration with a sharing service (Messaging app , Social media).
+2. Adding context preview for a much rich user experience.
+3. Recipe filtering and sorting options.
 
 
 ## FAQ
 
 Q: Is there an Android version of this app?
+
 A: No, currently, the project is only available for iOS. However, you can build a similar app for Android using the project's concepts and features.
 
 ## Support
@@ -99,4 +102,5 @@ and of course ChatGPT :D
 If you have any questions or inquiries, feel free to reach out
 
 GitHub: @shadyadel90
+
 Email: shadybusiness219@gmail.com
