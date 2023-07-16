@@ -7,136 +7,123 @@
 
 import UIKit
 
-class RecipeListView: UITableViewController{
+class RecipeListView: UITableViewController {
     
+    // MARK: - Properties
+    private let viewModel = RecipeListViewModel()
+    private var spinner = UIActivityIndicatorView()
     
-    lazy var ViewModel : RecipeListViewModel = {
-        return RecipeListViewModel()
-    }()
-    
-    let urlString = "https://api.npoint.io/43427003d33f1f6b51cc"
-    var spinner = UIActivityIndicatorView()
-
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        ViewModel.fetchData()
+        
+        viewModel.delegate = self
+        viewModel.fetchData()
+        
         initSpinner()
         navigationItem.backButtonTitle = ""
         tableView.alpha = 0.5
-        fetchDataFromAPI()
-       
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
     // MARK: - Table view data source
     
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return ViewModel.recipesCount
+        return viewModel.recipesCount
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath) as? RecipeListViewCell else {
-            fatalError("Cell not exists in storyboard")
+            fatalError("Cell does not exist in storyboard")
         }
-        
-        let recipeCell = ViewModel.recipes[indexPath.row]
-        
-        cell.name.text = recipeCell.name
-        if recipeCell.calories != ""{
-            cell.calories.text = "\(recipeCell.calories )"
-        }
-        else {
-            cell.calories.text = "not specified"
-        }
-        cell.heartImage.isHidden = UserDefaults().bool(forKey: ViewModel.recipes[indexPath.row].name) ? false : true
-        let imageUrl = URL(string: recipeCell.image!)
-        ViewModel.getImageFromCache(url: imageUrl!) { image in
-            if image != nil {
-                cell.recipeImage.image = image
-                self.spinner.stopAnimating()
-                UIView.animate(withDuration: 0.2) {
-                    self.tableView.alpha = 1.0
-                }
-                
+        // Configure the cell with recipe data
+        if let recipe = viewModel.getRecipe(at: indexPath.row) {
+            cell.name.text = recipe.name
+            if recipe.calories != "" {
+                cell.calories.text = "\(recipe.calories)"
             } else {
-                print("Couldn't fetch the image")
+                cell.calories.text = "not specified"
+            }
+            // Save user's favorite recipe
+            cell.heartImage.isHidden = UserDefaults().bool(forKey: recipe.name) ? false : true
+            
+            // Load the recipe image asynchronously
+            if recipe.image != nil {
+                viewModel.getImage(for: recipe) { image in
+                    if let image = image {
+                        cell.recipeImage.image = image
+                        self.spinner.stopAnimating()
+                        UIView.animate(withDuration: 0.2) {
+                            self.tableView.alpha = 1.0
+                        }
+                    } else {
+                        print("Couldn't fetch the image")
+                    }
+                }
             }
         }
+        
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDetail" {
+            guard let indexPath = tableView.indexPathForSelectedRow,
+                  let destinationController = segue.destination as? RecipeDetailView,
+                  let recipe = viewModel.getRecipe(at: indexPath.row) else {
+                return
+            }
+            // Force the user to login first
+            if !UserDefaults.standard.bool(forKey: "loggedIn") {
+                showError(message: "We can't proceed to details as you didn't log in")
+            } else {
+                // Pass the recipe details to the detail view controller
+                destinationController.recipeTitle = recipe.name
+                destinationController.recipeCalories = recipe.calories
+                destinationController.recipeImageUrl = recipe.image ?? ""
+                destinationController.recipeDescription = recipe.description
+                destinationController.recipeIngredients = recipe.ingredients.joined(separator: "\n")
+            }
+        }
+    }
     
-   
+    // MARK: - Helper Methods
     func initSpinner() {
         spinner.style = .large
         spinner.hidesWhenStopped = true
         spinner.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(spinner)
-        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
-                                      spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
-        
+        NSLayoutConstraint.activate([
+            spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
     
-    func fetchDataFromAPI() {
-        spinner.startAnimating()
-        if let url = URL(string: urlString) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let error = error {
-                    print("Error: \(error)")
-                    return
-                }
-                
-                if let data = data {
-                    do {
-                        let decoder = JSONDecoder()
-                        self.ViewModel.recipes = try decoder.decode([Recipe].self, from: data)
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                            self.ViewModel.refresherStopAnimating()
-                        }
-                    } catch {
-                        print("Error parsing JSON: \(error)")
-                    }
-                }
-                else {
-                    print("No data recieved")
-                }
-            }.resume()
+    func refresherStopAnimating() {
+        if let refreshControl = refreshControl, refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let recipes = ViewModel.recipes
-        if segue.identifier == "showDetail"{
-           
-            if !UserDefaults.standard.bool(forKey: "loggedIn"){
-                showAlert()
-            }
-            else {
-                if let indexPath = tableView.indexPathForSelectedRow {
-                    let destinationController = segue.destination as! RecipeDetailView
-                    destinationController.recipeTitle = recipes[indexPath.row].name
-                    destinationController.recipeCalories = recipes[indexPath.row].calories
-                    destinationController.recipeImageUrl = recipes[indexPath.row].image!
-                    destinationController.recipeDescription = recipes[indexPath.row].description
-                    var ingredients = ""
-                    for i in recipes[indexPath.row].ingredients {
-                        ingredients.append("\(i) \n")
-                    }
-                    destinationController.recipeIngredients = ingredients
-                }
-            }
-        }
+}
+
+extension RecipeListView: RecipeListViewModelDelegate {
+    // MARK: - RecipeListViewModelDelegate Methods
+    func recipesUpdated() {
+        tableView.reloadData()
+        refresherStopAnimating()
     }
     
-    func showAlert() {
-        let alertController = UIAlertController(title: "Oops", message: "We can't proceed to details as you didn't log in", preferredStyle: .alert)
+    func showError(message: String) {
+        // Display an error message using an alert controller
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
     }
 }
+
