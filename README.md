@@ -102,4 +102,5 @@ and of course ChatGPT :D
 If you have any questions or inquiries, feel free to reach out
 
 GitHub: @shadyadel90
+
 Email: shadybusiness219@gmail.com
