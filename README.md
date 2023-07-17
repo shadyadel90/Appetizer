@@ -74,7 +74,7 @@ Here are some upcoming features and improvements planned for the project:
 
 1. Integration with a sharing service (Messaging app , Social media).
 2. Adding context preview for a much rich user experience.
-3. Recipe filtering and sorting options.
+3. Recipe filtering and sorting options. *Search Added
 
 
 ## FAQ

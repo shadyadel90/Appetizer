@@ -32,7 +32,7 @@ class RecipeDetailVM {
         return userDefaults.bool(forKey: recipeTitle)
     }
     
-    // MARK: - Initializer
+    // MARK: - Cell Initializer
     
     init(recipe: Recipe) {
         recipeTitle = recipe.name
