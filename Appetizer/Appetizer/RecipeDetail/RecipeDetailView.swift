@@ -9,105 +9,77 @@ import UIKit
 
 class RecipeDetailView: UIViewController {
     
-    
-    let userDefaults = UserDefaults()
-    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: RecipeDetailHeaderView!
     
-    @IBAction func heartPressed(_ sender: UIButton) {
-        if headerView.heartButton.currentImage == UIImage(systemName: "heart")
-        {
-            headerView.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            UserDefaults().set(true, forKey: recipeTitle)
-        }
-        else {
-            headerView.heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
-            UserDefaults().set(false, forKey: recipeTitle)
-        }
-        
+    var viewModel: RecipeDetailVM!
+    
+    // Convenience initializer to create an instance of RecipeDetailView with a Recipe
+    convenience init(recipe: Recipe) {
+        self.init(nibName: nil, bundle: nil)
+        viewModel = RecipeDetailVM(recipe: recipe)
     }
-   
-    
-    
-    var recipeTitle = ""
-    var recipeCalories = ""
-    var recipeImageUrl = ""
-    var recipeFav = true
-    var recipeDescription = ""
-    var recipeIngredients = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set the delegate and data source for the table view
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.contentInsetAdjustmentBehavior = .never
-        navigationController?.navigationBar.prefersLargeTitles = false
-        // Configure header view
-        headerView.nameLabel.text = recipeTitle
-        headerView.caloriesLabel.text = recipeCalories
-        Setimage(imageUrl: recipeImageUrl)
-        favouriteButton()
         
+        // Configure table view behavior
+        tableView.contentInsetAdjustmentBehavior = .never
+        
+        // Disable large titles in the navigation bar
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        // Set the recipe title and calories in the header view
+        headerView.nameLabel.text = viewModel.recipeTitle
+        headerView.caloriesLabel.text = viewModel.recipeCalories
+        
+        // Load the recipe image asynchronously and update the header view
+        viewModel.loadImage { [weak self] image in
+            DispatchQueue.main.async {
+                self?.headerView.headerImageView.image = image
+            }
+        }
+        
+        // Update the favorite button based on the recipe's favorite status
+        updateFavoriteButton()
     }
     
-    func favouriteButton (){
-        if userDefaults.bool(forKey: recipeTitle)
-        {
-            headerView.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }
-        else {
-            headerView.heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        }
-        view.reloadInputViews()
+    // Action method for when the heart button is pressed
+    @IBAction func heartPressed(_ sender: UIButton) {
+        viewModel.toggleFavorite() // Toggle the favorite status of the recipe
+        updateFavoriteButton() // Update the favorite button appearance
     }
     
-  
-    func Setimage(imageUrl: String){
-       
-        if let imageURL = URL(string: imageUrl) {
-            URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
-                if let error = error {
-                    print("Error loading image: \(error)")
-                    return
-                }
-                else {
-                    print("Success")
-                }
-                if let data = data {
-                    DispatchQueue.main.async { [self] in
-                    let image = UIImage(data: data)
-                        self.headerView.headerImageView.image = image
-                    }
-                }
-            }.resume()
-            
-        }
+    // Update the appearance of the favorite button based on the recipe's favorite status
+    private func updateFavoriteButton() {
+        let image = viewModel.isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        headerView.heartButton.setImage(image, for: .normal)
     }
-
-   
-
 }
+
 extension RecipeDetailView: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section : Int) -> Int {
-        return 2
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2 // The table view has 2 rows
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
+            // Configure and return the cell for the description row
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionDetailViewCell", for: indexPath) as! RecipeDetailDescriptionCell
-            cell.descriptionLabel.text = recipeDescription
+            cell.descriptionLabel.text = viewModel.recipeDescription
             return cell
         case 1:
+            // Configure and return the cell for the ingredients row
             let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientsDetailViewCell", for: indexPath) as! RecipeDetailIngredientsCell
-            cell.ingredientsLabel.text = recipeIngredients
-            
+            cell.ingredientsLabel.text = viewModel.recipeIngredients
             return cell
         default:
-            fatalError("Failed to instantiate the table view cell for deta il view controller")
-            
+            fatalError("Failed to instantiate the table view cell for detail view controller")
         }
-        
     }
 }

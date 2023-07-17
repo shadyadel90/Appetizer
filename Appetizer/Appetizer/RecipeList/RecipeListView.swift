@@ -12,7 +12,8 @@ class RecipeListView: UITableViewController {
     // MARK: - Properties
     private let viewModel = RecipeListViewModel()
     private var spinner = UIActivityIndicatorView()
-    
+    var selectedRecipe: Recipe?
+
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,18 +79,16 @@ class RecipeListView: UITableViewController {
                   let recipe = viewModel.getRecipe(at: indexPath.row) else {
                 return
             }
-            // Force the user to login first
+            
+            // Force the user to log in first
             if !UserDefaults.standard.bool(forKey: "loggedIn") {
                 showError(message: "We can't proceed to details as you didn't log in")
             } else {
                 // Pass the recipe details to the detail view controller
-                destinationController.recipeTitle = recipe.name
-                destinationController.recipeCalories = recipe.calories
-                destinationController.recipeImageUrl = recipe.image ?? ""
-                destinationController.recipeDescription = recipe.description
-                destinationController.recipeIngredients = recipe.ingredients.joined(separator: "\n")
+                destinationController.viewModel = RecipeDetailVM(recipe: recipe)
             }
         }
+
     }
     
     // MARK: - Helper Methods

@@ -109,6 +109,7 @@
 		F240548A2A6018B3009F43C8 /* Appetizer */ = {
 			isa = PBXGroup;
 			children = (
+				F2C387A82A63EE4B0012EEF2 /* ViewCells */,
 				F24054A62A601B9C009F43C8 /* RecipeList */,
 				F2E5EDBC2A61063C0080A864 /* RecipeDetail */,
 				F24054A72A601BD7009F43C8 /* LoginScreen */,
@@ -152,7 +153,6 @@
 			children = (
 				F240549F2A601961009F43C8 /* RecipeListView.swift */,
 				F24054AB2A601DAE009F43C8 /* RecipeListViewModel.swift */,
-				F24054A12A601A24009F43C8 /* RecipeListViewCell.swift */,
 			);
 			path = RecipeList;
 			sourceTree = "<group>";
@@ -174,14 +174,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F2C387A82A63EE4B0012EEF2 /* ViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F24054A12A601A24009F43C8 /* RecipeListViewCell.swift */,
+				F2E5EDC32A612AE00080A864 /* RecipeDetailHeaderCell.swift */,
+				F2E5EDC52A612AFC0080A864 /* RecipeDetailDescriptionCell.swift */,
+				F2E5EDC72A612B180080A864 /* RecipeDetailIngredientsCell.swift */,
+			);
+			path = ViewCells;
+			sourceTree = "<group>";
+		};
 		F2E5EDBC2A61063C0080A864 /* RecipeDetail */ = {
 			isa = PBXGroup;
 			children = (
 				F2E5EDBD2A61294C0080A864 /* RecipeDetailView.swift */,
 				F2E5EDBF2A6129680080A864 /* RecipeDetailVM.swift */,
-				F2E5EDC32A612AE00080A864 /* RecipeDetailHeaderCell.swift */,
-				F2E5EDC52A612AFC0080A864 /* RecipeDetailDescriptionCell.swift */,
-				F2E5EDC72A612B180080A864 /* RecipeDetailIngredientsCell.swift */,
 			);
 			path = RecipeDetail;
 			sourceTree = "<group>";
