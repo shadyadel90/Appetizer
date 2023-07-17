@@ -91,10 +91,7 @@ If you encounter any issues or have questions, please reach out to our support t
 
 We would like to thank the following organizations:
 
-AppCoda
-Google
-Youtube
-and of course ChatGPT :D
+AppCoda, Google ,Youtube and of course ChatGPT :D
 
 
 ## Contact
